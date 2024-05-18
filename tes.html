@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penunjuk Waktu</title>
+</head>
+
+<body>
+
+  <nav>
+    <div>
+      <ul>
+        <li style="list-style: none;">
+          <button>
+            <a href="index.html" style="text-decoration: none; color: black;">Back</a>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div style="display: grid; justify-content: center; align-items: center; font-size: 90px; margin-top: 100px;">
+    <div id="clock" style="margin-top: -100px;"></div>
+    <!-- <div id="date"></div> -->
+  </div>
+
+  <div style="border: 3px solid black;">
+    <nav style="background-color: rgb(255, 0, 0); margin-top: -22px;" class="nav-jadwal">
+      <h3
+        style="border: 2px solid rgb(58, 57, 57); border-radius: 1px; color: azure; display: flex; justify-content: center;">
+        Kelas</h3>
+      <div style="display: flex; justify-content: center; align-items: center; margin-top: -25px;">
+        <p
+          style="border: 1px solid white; width: 100px; display: flex; justify-content: center; background-color: rgb(214, 200, 200);">
+          X-E.12</p>
+        <div id="date"
+          style="border: 1px solid white; width: 100px; display: flex; justify-content: center; background-color: rgb(224, 64, 58);">
+        </div>
+      </div>
+    </nav>
+    <div class="div-jadwal">
+      <ul class="ul-jadwal">
+        <li class="li-jadwal">
+          <h3 class="h3-jadwal">Senin</h3>
+          <p class="p-jadwal">Kimia</p>
+          <p class="p-jadwal">Geografi</p>
+          <p class="p-jadwal">Matematika</p>
+          <p class="p-jadwal">Ekonomi</p>
+        </li>
+        <li class="li-jadwal">
+          <h3 class="h3-jadwal">Selasa</h3>
+          <p class="p-jadwal">Sejarah</p>
+          <p class="p-jadwal">PKWU</p>
+          <p class="p-jadwal">B.indonesia</p>
+          <p class="p-jadwal">PJOK</p>
+        </li>
+        <li class="li-jadwal">
+          <h3 class="h3-jadwal">Rabu</h3>
+          <p class="p-jadwal">PAI</p>
+          <p class="p-jadwal">B.Jawa</p>
+          <p class="p-jadwal">Informatika</p>
+          <p class="p-jadwal">PKN</p>
+        </li>
+        <li class="li-jadwal">
+          <h3 class="h3-jadwal">Kamis</h3>
+          <p class="p-jadwal">B.indonesia</p>
+          <p class="p-jadwal">Sosiologi</p>
+          <p class="p-jadwal">B.inggris</p>
+          <p class="p-jadwal">BK</p>
+          <p class="p-jadwal">Matematika</p>
+        </li>
+        <li class="li-jadwal">
+          <h3 class="h3-jadwal">Jum'at</h3>
+          <p class="p-jadwal">Biologi</p>
+          <p class="p-jadwal">Fisika</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 9px;">
+    <div class="div-time">
+      <ul class="ul-time">
+        <li class="li-h3">
+          <h3 class="h3-time">Senin</h3>
+        </li>
+        <li class="li-a">
+          <a class="a-time" style="background-color: red; color: aliceblue;">Kima</a>
+        </li>
+        <li class="li-a">
+          <a class="a-time" style="background-color: red; color: aliceblue;">geografi</a>
+        </li>
+        <li class="li-a">
+          <a class="a-time">Matematika</a>
+        </li>
+        <li class="li-a">
+          <a class="a-time">Ekonomi</a>
+        </li>
+        <li class="li-button">
+          <button class="btn-time">Open</button>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+  
+
+  <!-- script -->
+  <script>
+    function updateTime() {
+      // Buat objek Date untuk mendapatkan waktu saat ini
+      var currentTime = new Date();
+
+      // Ambil jam, menit, dan detik
+      var hours = currentTime.getHours();
+      var minutes = currentTime.getMinutes();
+      var seconds = currentTime.getSeconds();
+
+      // Tambahkan nol di depan jika angka kurang dari 10
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      // Tampilkan waktu dalam format jam:menit:detik
+      var clockDiv = document.getElementById('clock');
+      clockDiv.innerText = hours + ":" + minutes + ":" + seconds;
+
+      // Ambil hari, bulan, dan tahun
+      var day = currentTime.getDate();
+      var month = currentTime.getMonth() + 1; // Perhatikan bahwa bulan dimulai dari 0 (Januari = 0)
+      var year = currentTime.getFullYear();
+
+      // Tampilkan tanggal dalam format hari/bulan/tahun
+      var dateDiv = document.getElementById('date');
+      dateDiv.innerText = day + "/" + month + "/" + year;
+    }
+
+    // Panggil fungsi updateTime setiap detik
+    setInterval(updateTime, 1000);
+
+    // Panggil updateTime sekali agar waktu tampilan tidak memerlukan waktu untuk muncul
+    updateTime();
+  </script>
+</body>
+
+
+<style>
+  .nav-jadwal {
+    height: 8vh;
+  }
+  .div-jadwal {
+    background-color: rgb(239, 239, 250);
+    display: flex;
+    justify-content: center;
+    height: 35vh;    
+  }
+
+  .ul-jadwal {
+    margin: 10px;
+    display: flex;
+    height: 31vh;
+  }
+
+  .li-jadwal {
+    background-color: coral;
+    border: 2px solid rgb(34, 32, 32);
+    list-style: none;
+    padding: 9px;
+    width: 100px;
+  }
+
+  .h3-jadwal {
+    background-color: gray;
+    border: 2px solid white;
+    border-radius: 8px;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+  }
+
+  .p-jadwal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+    border: 1px solid white;
+  }
+
+  .div-time {
+    background-color: rgb(248, 18, 30);
+    border: 3px solid black;
+    width: 150px;
+    display: flex;
+    justify-content: left;
+    height: 25vh;
+  }
+  
+  .li-h3 {
+    list-style: none;
+    border: 2px solid rgb(247, 238, 238);
+    width: 100px;
+    margin-left: -20px;
+    margin-bottom: 10px;
+  }
+  .h3-time {
+    margin-top: -1px;
+    margin-bottom: -1px;
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+    background-color: grey;
+    color: aliceblue;
+  }
+  .li-a {
+    list-style: none;
+    border: 2px solid rgb(255, 249, 249);
+    width: 100px;
+    margin-left: -20px;
+    margin-bottom: 2px;
+  }
+  .a-time {
+    background-color: rgb(248, 244, 244);
+    color: black;
+    font-family: cursive;
+    display: flex;
+    justify-content: center;
+  }
+
+  .li-button {
+    list-style: none;
+    display: flex;
+    margin-left: 7px;
+    margin-top: 8px;
+    margin-bottom: -9px;
+  }
+  .btn-time {
+    background-color: rgb(86, 171, 250);
+    font-family: cursive;
+  }
+  .btn-time:hover {
+    background-color: aqua;
+    transition: .3s ease-in-out;
+    transition-delay: .2s;
+  }
+</style>
+
+
+
+
+
+</html>
